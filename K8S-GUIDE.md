@@ -221,3 +221,26 @@ helm uninstall my-redis      # ถอนการติดตั้งและ�
 ---
 
 *ดูตัวอย่างโค้ดและวิธีทำแบบ Hands-on ได้ในโฟลเดอร์ `00-setup` ถึง `08-helm`*
+
+# เพิ่มเติม วิธีเปิดใช้งาน Kubectl Autocomplete (คำสั่ง tab ช่วย)
+
+```bash
+sudo apt-get install bash-completion
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+source ~/.bashrc
+---
+
+## สำหรับ Zsh (เผื่อคุณเปลี่ยนไปใช้ Zsh)
+
+```bash
+echo 'source <(kubectl completion zsh)' >> ~/.zshrc
+source ~/.zshrc
+---
+
+## ทริกเพิ่มเติม (แถมให้เพื่อความสะดวก)
+### พิมพ์ kubectl บ่อยๆ อาจจะเมื่อยมือ คนส่วนใหญ่จะนิยมตั้งชื่อย่อ (Alias) ให้เหลือแค่ตัว k ตัวเดียวครับ สามารถตั้งค่าร่วมกับ Autocomplete ได้ง่ายๆ โดยเพิ่มคำสั่งนี้ลงไปใน ~/.bashrc ต่อได้เลย:
+
+```bash
+alias k=kubectl
+complete -o default -F __start_kubectl k
+---
